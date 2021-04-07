@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace UserManagement.Data
@@ -58,7 +59,19 @@ namespace UserManagement.Data
             #endregion
 
             #region Add some groups
-            // Add code to generate demo groups here
+            Group management, development;
+            dc.Groups.Add(management = new Group
+            {
+                Name = "Management",
+            });
+            dc.Groups.Add(development = new Group
+            {
+                Name = "Development",
+            });
+
+            foo.Memberships = new List<Group> { management };
+            john.Memberships = new List<Group> { development };
+            jane.Memberships = new List<Group> { development };
             #endregion
 
             await dc.SaveChangesAsync();

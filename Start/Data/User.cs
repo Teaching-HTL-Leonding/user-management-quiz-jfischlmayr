@@ -21,5 +21,6 @@ namespace UserManagement.Data
 
         [MaxLength(100)]
         public string? LastName { get; set; }
+        public List<Group>? Memberships { get; set; }
     }
 }
